@@ -1,24 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+const arr = ["list", "list-2", "list-3"];
 
 function App() {
+  const [arrCopy, setArrayCopy] = useState(arr);
+
+  const handleDeleteItems = (itemsIndex: number | string) => {
+    let newArray = arrCopy;
+    let filteredArray = newArray.filter((item, index) => {
+      return index !== itemsIndex;
+    });
+    setArrayCopy(filteredArray);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-slate-600 flex flex-col justify-center items-center h-screen w-screen">
+      <ul>
+        {arrCopy.map((item, index) => {
+          return (
+            <li className="flex gap-4 justify-center items-center py-4">
+              {item}
+              <button
+                className="p-2 border border-green-600 rounded-2xl bg-green-900"
+                style={{ WebkitTapHighlightColor: "transparent" }}
+                onClick={() => handleDeleteItems(index)}
+              >
+                Delete items
+              </button>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
