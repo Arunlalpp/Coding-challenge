@@ -1,39 +1,42 @@
-import defaultBirthdayData from "./birthdayData";
-import BirthdayRemainderCard from "./components/BirthdayRemainderCard";
+// import defaultBirthdayData from "./birthdayData";
+// import BirthdayRemainderCard from "./components/BirthdayRemainderCard";
+
+import StudentsDetails from "./components/StudentsDetails";
+import defaultStudentsData from "./studentsData";
 
 function App() {
-  const currentYearBirthday = (userInfo: string[], age: string[]) => {
-    const filteredDate = userInfo.filter((userInfo) => age.includes(userInfo));
-    console.log({ filteredDate });
-    return filteredDate;
-  };
+  // const currentYearBirthday = (userInfo: string[], age: string[]) => {
+  //   const filteredDate = userInfo.filter((userInfo) => age.includes(userInfo));
+  //   console.log({ filteredDate });
+  //   return filteredDate;
+  // };
 
-  const birthdayData = () => {
-    defaultBirthdayData.userInfo.forEach((day) => {
-      let ages = day.age;
-      currentYearBirthday(day.age, ages);
-    });
-  };
+  // const birthdayData = () => {
+  //   defaultBirthdayData.userInfo.forEach((day) => {
+  //     let ages = day.age;
+  //     currentYearBirthday(day.age, ages);
+  //   });
+  // };
 
-  const UTCTimes = [
-    "2023-07-29T06:04:32Z",
-    "2023-07-29T06:04:32Z",
-    "2023-07-29T06:04:32Z",
-  ];
+  // const UTCTimes = [
+  //   "2023-07-29T06:04:32Z",
+  //   "2023-07-29T06:04:32Z",
+  //   "2023-07-29T06:04:32Z",
+  // ];
 
-  const getFormattedDateWithWeekDay = (UTCTimes: string[]) => {
-    UTCTimes.map(
-      (time) => (
-        // eslint-disable-next-line no-sequences
-        new Date(time).getDay(),
-        new Date(time).getMonth(),
-        new Date(time).getMonth(),
-        new Date(time).getFullYear()
-      )
-    );
-    const a = new Date('2023-07-29T06:04:32Z').getDate()
-    return `${a}`
-  };
+  // const getFormattedDateWithWeekDay = (UTCTimes: string[]) => {
+  //   UTCTimes.map(
+  //     (time) => (
+  //       // eslint-disable-next-line no-sequences
+  //       new Date(time).getDay(),
+  //       new Date(time).getMonth(),
+  //       new Date(time).getMonth(),
+  //       new Date(time).getFullYear()
+  //     )
+  //   );
+  //   const a = new Date('2023-07-29T06:04:32Z').getDate()
+  //   return `${a}`
+  // };
 
   // const calculate_age = (dob: any) => {
   //   console.log({ currentYearBirthday });
@@ -47,7 +50,7 @@ function App() {
 
   return (
     <div className="bg-slate-600 flex flex-col justify-center items-center h-screen w-screen">
-      <div onClick={birthdayData} role="button">
+      {/* <div onClick={birthdayData} role="button">
         {getFormattedDateWithWeekDay(UTCTimes)}
 
         {defaultBirthdayData.userInfo.map((userInfo, index) => {
@@ -60,7 +63,12 @@ function App() {
             />
           );
         })}
-      </div>
+      </div> */}
+      <StudentsDetails
+        name={defaultStudentsData.name}
+        students={defaultStudentsData.students}
+        teacherName={defaultStudentsData.teacherName}
+      />
     </div>
   );
 }
