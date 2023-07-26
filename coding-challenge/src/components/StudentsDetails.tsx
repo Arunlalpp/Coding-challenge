@@ -14,7 +14,7 @@ export default function StudentsDetails({
   students,
 }: StudentsDetailsProps) {
   const initialStudentsInfo = {
-    id: "",
+    id: 0,
     name: "",
     marks: [],
   };
@@ -33,6 +33,8 @@ export default function StudentsDetails({
 
   const handleAddStudent = () => {
     setStudentsInfo((prevStudents) => [...prevStudents, currentStudent]);
+    console.log({ currentStudent });
+
     setCurrentStudent(initialStudentsInfo);
   };
 
@@ -51,7 +53,7 @@ export default function StudentsDetails({
     setIsEditing(false);
   };
 
-  const handleDeleteStudent = (id: string) => {
+  const handleDeleteStudent = (id: number) => {
     setStudentsInfo((prevStudents) =>
       prevStudents.filter((students) => students.id)
     );
@@ -72,14 +74,22 @@ export default function StudentsDetails({
             value={currentStudent.name}
             onChange={handleInputChange}
           />
-          <span>{currentStudent.name}</span>
+          <span className="pl-2">{currentStudent.name}</span>
         </div>
         {isEditing ? (
-          <div>
-            <button type="button" onClick={handleUpdateStudent}>
+          <div className="flex justify-center items-center gap-10 py-4">
+            <button
+              type="button"
+              onClick={handleUpdateStudent}
+              className="bg-green-900 rounded-xl p-2 border border-black w-1/2"
+            >
               Update Student
             </button>
-            <button type="button" onClick={() => setIsEditing(false)}>
+            <button
+              type="button"
+              onClick={() => setIsEditing(false)}
+              className="bg-green-900 rounded-xl p-2 border border-black  w-1/2"
+            >
               Cancel
             </button>
           </div>
@@ -88,7 +98,7 @@ export default function StudentsDetails({
             <button
               type="button"
               onClick={handleAddStudent}
-              className="bg-green-900 rounded-xl p-2 border border-black"
+              className="bg-green-900 rounded-xl p-2 border border-black  w-1/2"
             >
               Add Student
             </button>
