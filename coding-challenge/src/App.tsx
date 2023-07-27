@@ -1,10 +1,6 @@
 // import defaultBirthdayData from "./birthdayData";
 // import BirthdayRemainderCard from "./components/BirthdayRemainderCard";
 
-// import StudentsDetails from "./components/StudentsDetails";
-import StudentsDetailsTable from "./components/StudentsDetailsTable";
-// import defaultStudentsData from "./studentsData";
-
 function App() {
   // const currentYearBirthday = (userInfo: string[], age: string[]) => {
   //   const filteredDate = userInfo.filter((userInfo) => age.includes(userInfo));
@@ -65,9 +61,6 @@ function App() {
           );
         })}
       </div> */}
-      {/* <StudentsDetails /> */}
-
-      <StudentsDetailsTable />
     </div>
   );
 }
