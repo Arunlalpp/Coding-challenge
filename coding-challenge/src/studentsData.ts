@@ -1,11 +1,11 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   name: "class A",
-  teacherName: "Mary",
+  teacherName: "Aundrey Bitony",
   students: [
     {
       name: "Ravi",
-      id: 101,
+      id: "101",
       marks: [
         { subject: "English", mark: 25 },
         { subject: "Maths", mark: 48 },
@@ -16,7 +16,7 @@ export default {
     },
     {
       name: "Aju",
-      id: 102,
+      id: "102",
       marks: [
         { subject: "English", mark: 35 },
         { subject: "Maths", mark: 38 },
@@ -27,7 +27,7 @@ export default {
     },
     {
       name: "Mini SS",
-      id: 103,
+      id: "103",
       marks: [
         { subject: "English", mark: 12 },
         { subject: "Maths", mark: 49 },
@@ -38,7 +38,7 @@ export default {
     },
     {
       name: "Binu",
-      id: 104,
+      id: "104",
       marks: [
         { subject: "English", mark: 49 },
         { subject: "Maths", mark: 49 },

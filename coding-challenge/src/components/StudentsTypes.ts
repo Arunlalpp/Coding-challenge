@@ -5,7 +5,7 @@ export interface Marks {
 
 export interface Students {
   name: string;
-  id: number;
+  id: string;
   marks: Marks[];
 }
 

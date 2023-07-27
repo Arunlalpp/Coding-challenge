@@ -1,8 +1,9 @@
 // import defaultBirthdayData from "./birthdayData";
 // import BirthdayRemainderCard from "./components/BirthdayRemainderCard";
 
-import StudentsDetails from "./components/StudentsDetails";
-import defaultStudentsData from "./studentsData";
+// import StudentsDetails from "./components/StudentsDetails";
+import StudentsDetailsTable from "./components/StudentsDetailsTable";
+// import defaultStudentsData from "./studentsData";
 
 function App() {
   // const currentYearBirthday = (userInfo: string[], age: string[]) => {
@@ -49,7 +50,7 @@ function App() {
   // const b = new Date(30 - 9 - 1959);
 
   return (
-    <div className="bg-slate-600 flex flex-col justify-center items-center h-screen w-screen">
+    <div className="bg-slate-600">
       {/* <div onClick={birthdayData} role="button">
         {getFormattedDateWithWeekDay(UTCTimes)}
 
@@ -64,11 +65,9 @@ function App() {
           );
         })}
       </div> */}
-      <StudentsDetails
-        name={defaultStudentsData.name}
-        students={defaultStudentsData.students}
-        teacherName={defaultStudentsData.teacherName}
-      />
+      {/* <StudentsDetails /> */}
+
+      <StudentsDetailsTable />
     </div>
   );
 }

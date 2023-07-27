@@ -2,19 +2,9 @@ import React, { useState } from "react";
 
 import { Students } from "./StudentsTypes";
 
-export interface StudentsDetailsProps {
-  name: string;
-  teacherName: string;
-  students: Students[];
-}
-
-export default function StudentsDetails({
-  name,
-  teacherName,
-  students,
-}: StudentsDetailsProps) {
+export default function StudentsDetails() {
   const initialStudentsInfo = {
-    id: 0,
+    id: "",
     name: "",
     marks: [],
   };
@@ -31,8 +21,18 @@ export default function StudentsDetails({
     }));
   };
 
+  const handleInputValueChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { id, value } = event.target;
+    setCurrentStudent((prevStudent) => ({
+      ...prevStudent,
+      [id]: value,
+    }));
+  };
+
   const handleAddStudent = () => {
-    setStudentsInfo((prevStudents) => [...prevStudents, currentStudent]);
+    setStudentsInfo([...studentsInfo, currentStudent]);
     console.log({ currentStudent });
 
     setCurrentStudent(initialStudentsInfo);
@@ -53,10 +53,15 @@ export default function StudentsDetails({
     setIsEditing(false);
   };
 
-  const handleDeleteStudent = (id: number) => {
+  const handleDeleteStudent = (id: string) => {
     setStudentsInfo((prevStudents) =>
       prevStudents.filter((students) => students.id)
     );
+  };
+
+  const hardCodedValues = {
+    name: "Name",
+    id: "ID",
   };
 
   return (
@@ -65,30 +70,41 @@ export default function StudentsDetails({
         Student Details
       </h1>
       <form>
-        <div>
-          <label className="px-2">Name:</label>
+        <div className="flex flex-col justify-center items-start gap-4">
+          <label className="px-2">{hardCodedValues.name}</label>
           <input
             className="p-2 rounded-2xl border-2 border-red-950"
-            type="text"
             name="name"
-            value={currentStudent.name}
             onChange={handleInputChange}
+            placeholder="enter your name"
+            type="text"
+            value={currentStudent.name}
+          />
+          <label className="px-2">{hardCodedValues.id}</label>
+          <input
+            className="p-2 rounded-2xl border-2 border-red-950"
+            id="id"
+            onChange={handleInputValueChange}
+            placeholder="Enter your id"
+            type="text"
+            value={currentStudent.id}
           />
           <span className="pl-2">{currentStudent.name}</span>
+          <span className="pl-2">{currentStudent.id}</span>
         </div>
         {isEditing ? (
           <div className="flex justify-center items-center gap-10 py-4">
             <button
               type="button"
               onClick={handleUpdateStudent}
-              className="bg-green-900 rounded-xl p-2 border border-black w-1/2"
+              className="bg-green-900 rounded-xl p-2 border border-black w-1/2 whitespace-nowrap"
             >
               Update Student
             </button>
             <button
               type="button"
               onClick={() => setIsEditing(false)}
-              className="bg-green-900 rounded-xl p-2 border border-black  w-1/2"
+              className="bg-green-900 rounded-xl p-2 border border-black  w-1/2 whitespace-nowrap"
             >
               Cancel
             </button>
@@ -98,7 +114,7 @@ export default function StudentsDetails({
             <button
               type="button"
               onClick={handleAddStudent}
-              className="bg-green-900 rounded-xl p-2 border border-black  w-1/2"
+              className="bg-green-900 rounded-xl p-2 border border-black w-1/2"
             >
               Add Student
             </button>
@@ -108,16 +124,16 @@ export default function StudentsDetails({
       <ul>
         {studentsInfo.map((student) => (
           <li key={student.id}>
-            <div className="w-full flex justify-center items-center gap-5">
+            <div className="w-full h-full flex justify-center items-center gap-5">
               <button
-                className="bg-blue-900 rounded-xl p-2 border border-black"
+                className="bg-blue-900 rounded-xl p-2 border border-black w-1/2"
                 type="button"
                 onClick={() => handleEditStudent(student)}
               >
                 Edit
               </button>
               <button
-                className="bg-red-900 rounded-xl p-2 border border-black"
+                className="bg-red-900 rounded-xl p-2 border border-black w-1/2"
                 type="button"
                 onClick={() => handleDeleteStudent(student.id)}
               >
