@@ -21,25 +21,22 @@ export default function StudentsDetailsTable() {
   const currentStudent = {
     name: "Arun",
     id: "111",
-    marks: [
-      { subject: "English", mark: 25 },
-      { subject: "Maths", mark: 48 },
-      { subject: "Physics", mark: 40 },
-      { subject: "Chemistry", mark: 30 },
-      { subject: "Computer", mark: 20 },
-    ],
+    marks: [],
   };
 
-  
   const [students, setStudents] = useState(studentsInfo);
 
   const addStudent = () => {
     setStudents([...students, currentStudent]);
   };
 
+  const clearStudentsList = () => {
+    setStudents([]);
+  };
+
   return (
     <div>
-      <div className="flex justify-around items-center">
+      <div className="flex justify-around items-center w-full">
         <div className="flex flex-col justify-center items-center py-4">
           <span className="text-lg">
             {className}:
@@ -54,13 +51,20 @@ export default function StudentsDetailsTable() {
             </span>
           </span>
         </div>
-        <div className="">
+        <div className="flex justify-center items-center gap-4">
           <button
             className="p-2 border border-black bg-green-900 w-full"
             type="button"
             onClick={addStudent}
           >
-            Add
+            Add Student
+          </button>
+          <button
+            className="p-2 border border-black bg-green-900 w-full whitespace-nowrap"
+            type="button"
+            onClick={clearStudentsList}
+          >
+            Clear Students Details
           </button>
         </div>
       </div>
