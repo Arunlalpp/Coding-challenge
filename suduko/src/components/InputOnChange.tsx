@@ -34,16 +34,11 @@ function InputOnChange() {
 
   const handleRedo = () => {
     const newPopped = [...popped];
-    const newPoints = [...popped];
-
     const poppedPoints = popped.pop();
-    if (!poppedPoints) {
-      return;
-    }
+    if (!poppedPoints) return;
 
-    points.push(poppedPoints);
-    setPoints([...newPoints]);
-    setPopped([...newPopped]);
+    setPoints([...points, poppedPoints]);
+    setPopped(newPopped);
   };
 
   const handleClear = () => {
@@ -54,6 +49,7 @@ function InputOnChange() {
     <div>
       <div className="flex justify-center items-center gap-4">
         <button
+          disabled={points.length === 0}
           onClick={handleUndo}
           type="button"
           className="py-2 px-4 bg-violet-800 text-white rounded-lg"
@@ -61,6 +57,7 @@ function InputOnChange() {
           Undo
         </button>
         <button
+          disabled={popped.length === 0}
           onClick={handleRedo}
           type="button"
           className="py-2 px-4 bg-violet-800 text-white rounded-lg"
@@ -80,8 +77,9 @@ function InputOnChange() {
         onClick={handleOnChange}
         role="button"
       >
-        {points.map((point) => (
+        {points.map((point, idx) => (
           <div
+            key={idx}
             className="absolute inline-block rounded-full h-3.5 w-3.5 bg-blue-900"
             style={{ left: point.x - 5 + "px", top: point.y - 5 + "px" }}
           ></div>
