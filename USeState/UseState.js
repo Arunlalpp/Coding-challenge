@@ -60,6 +60,4 @@ function render(container, componentFn) {
   addEvents();
 }
 
-console.log("hsdfseghfiug");
-
 render(root, App);
