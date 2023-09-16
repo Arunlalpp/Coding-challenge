@@ -7,9 +7,9 @@ function threeNPlusOne(number) {
 }
 
 function convergentSeriesLength(maxLengthNumber) {
-  const initialValue = 1;
+  let initialValue = 1;
   for (let i = maxLengthNumber; i != 1; i = threeNPlusOne(i)) {
-    maxLengthNumber++;
+    initialValue++;
   }
 
   return initialValue;
@@ -28,4 +28,4 @@ function convergentSeriesMaxLength(value1, value2) {
   return maxLength;
 }
 
-console.log(convergentSeriesMaxLength(2, 10000000));
+console.log(convergentSeriesMaxLength(2, 5));
