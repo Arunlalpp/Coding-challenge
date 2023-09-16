@@ -39,6 +39,7 @@ function InputOnChange() {
 
     setPoints([...points, poppedPoints]);
     setPopped(newPopped);
+    
   };
 
   const handleClear = () => {
