@@ -6,13 +6,13 @@ function threeNPlusOne(number) {
   return 3 * number + 1;
 }
 
-function convergentSeriesLength(maxLengthNumber) {
-  let initialValue = 1;
-  for (let i = maxLengthNumber; i != 1; i = threeNPlusOne(i)) {
-    initialValue++;
+function convergentSeriesLength(maxLengthONumber) {
+  let initialCount = 1;
+  for (let i = maxLengthONumber; i != 1; i = threeNPlusOne(i)) {
+    initialCount++;
   }
 
-  return initialValue;
+  return initialCount;
 }
 
 function convergentSeriesMaxLength(value1, value2) {
@@ -28,4 +28,4 @@ function convergentSeriesMaxLength(value1, value2) {
   return maxLength;
 }
 
-console.log(convergentSeriesMaxLength(2, 5));
+console.log(convergentSeriesMaxLength(2, 2));
